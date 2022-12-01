@@ -17,14 +17,4 @@ def test_register(client: TestClient):
     assert "id" in user_data
 
 
-# Test the user login endpoint - POST /api/v1/auth/login
-def test_login(client: TestClient):
-    data = {"email": "drew@gmail.com", "password": "Password1!"}
-    response = client.post("/api/v1/auth/login", json=data)
-    assert response.status_code == 200, response.text
-    response_data = response.json()
-    user_data = response_data["data"]
-    assert user_data["email"] == "drew@gmail.com"
-    assert "id" in user_data
-    assert "access_token" in response_data
-    assert len(response_data["access_token"])
+
